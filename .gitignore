@@ -1,0 +1,38 @@
+# Build artifacts
+k8sctl
+k8sctl-*
+*.exe
+
+# IDE and editor files
+.claude
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test and coverage
+coverage.out
+*.test
+
+# Environment and secrets
+.env
+.env.*
+*.key
+*.pem
+*.crt
+users.json
+kubeconfig*
+
+# Configuration (keep examples, ignore actual config)
+k8sctl.yaml
+config.yaml
+
+# Cluster configurations (may contain sensitive data)
+clusters/
+/etc/clusters/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

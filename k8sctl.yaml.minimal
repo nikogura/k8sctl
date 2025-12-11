@@ -1,0 +1,8 @@
+# Minimal k8sctl configuration
+# Only include what you need
+
+default_environment: prod
+
+clusters:
+  my-cluster:
+    environment: prod

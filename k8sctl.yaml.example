@@ -1,0 +1,49 @@
+# k8sctl configuration file example
+#
+# This file can be placed at:
+# - ./k8sctl.yaml (current directory)
+# - ~/.config/k8sctl/config.yaml (user config)
+# - /etc/k8sctl/config.yaml (system config)
+# - Custom path via K8SCTL_CONFIG environment variable
+#
+# Configuration priority (highest to lowest):
+# 1. Environment variables (K8SCTL_SERVER_URL, K8SCTL_CLUSTER_SUFFIX)
+# 2. This configuration file
+# 3. Built-in defaults
+
+# Default environment suffix when cluster is not found in mappings
+# If not specified, defaults to "dev"
+default_environment: dev
+
+# Cluster-specific configurations
+clusters:
+  # Development clusters
+  cluster1:
+    environment: dev
+    # Optional: Override server URL for this cluster
+    # server_url: https://k8sctl-dev.example.com
+
+  cluster2:
+    environment: dev
+
+  # Staging clusters
+  staging-us:
+    environment: staging
+    server_url: https://k8sctl-staging-us.example.com
+
+  staging-eu:
+    environment: staging
+    server_url: https://k8sctl-staging-eu.example.com
+
+  # Production clusters
+  prod-us-east:
+    environment: prod
+    server_url: https://k8sctl-prod-us.example.com
+
+  prod-us-west:
+    environment: prod
+    server_url: https://k8sctl-prod-west.example.com
+
+  prod-eu:
+    environment: prod
+    server_url: https://k8sctl-prod-eu.example.com
