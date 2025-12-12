@@ -95,11 +95,8 @@ jobs:
 
     strategy:
       matrix:
-        goos: [linux, darwin, windows]
+        goos: [linux, darwin]
         goarch: [amd64, arm64]
-        exclude:
-          - goos: windows
-            goarch: arm64
 
     steps:
     - name: Checkout code
@@ -117,11 +114,8 @@ jobs:
         CGO_ENABLED: 0
       run: |
         OUTPUT_NAME="k8sctl-${{ needs.test.outputs.version }}-${GOOS}-${GOARCH}"
-        if [ "$GOOS" = "windows" ]; then
-          OUTPUT_NAME="${OUTPUT_NAME}.exe"
-        fi
         go build -ldflags="-s -w -X main.version=${{ needs.test.outputs.version }}" -o "${OUTPUT_NAME}" .
-        chmod +x "${OUTPUT_NAME}" || true
+        chmod +x "${OUTPUT_NAME}"
 
     - name: Upload Client Artifact
       uses: actions/upload-artifact@v4
@@ -209,7 +203,6 @@ jobs:
           - Linux ARM64: `k8sctl-${{ needs.test.outputs.version }}-linux-arm64`
           - macOS AMD64: `k8sctl-${{ needs.test.outputs.version }}-darwin-amd64`
           - macOS ARM64: `k8sctl-${{ needs.test.outputs.version }}-darwin-arm64`
-          - Windows AMD64: `k8sctl-${{ needs.test.outputs.version }}-windows-amd64.exe`
 
           ### Server Container Image
           ```bash
