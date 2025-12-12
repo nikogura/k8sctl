@@ -1,5 +1,5 @@
 # Build artifacts
-k8sctl
+/k8sctl
 k8sctl-*
 *.exe
 
